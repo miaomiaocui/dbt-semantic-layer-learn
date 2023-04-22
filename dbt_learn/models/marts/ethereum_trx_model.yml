@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: ethereum_trx_daily
+    description: "Daily ethereum trx cnt after 2023-01-01"
+    columns:
+      - name: day
+        description: "day date"
+        tests:
+          - not_null
+      - name: trx_cnt
+        description: "count of distinct transactions"
+
+metrics:
+  - name: trx_Xd
+    label: trx_Xd
+    model: ref('ethereum_trx_daily')
+    description: "Total transaction counts in the X day period"
+
+    calculation_method: sum
+    expression: trx_cnt
+
+    timestamp: day
+    time_grains: [day, week, month, quarter, year]

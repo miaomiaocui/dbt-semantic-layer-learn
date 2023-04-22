@@ -1,0 +1,21 @@
+
+version: 2
+
+models:
+  - name: stg_ethereum_trx
+    description: "Eth transactions after 2023-01-01"
+    columns:
+      - name: block_timestamp
+        description: "block timestamp"
+        tests:
+          - not_null
+      - name: hash
+        description: "transaction hash"
+        tests:
+          - not_null
+      - name: from_address
+        description: "transaction from"
+        tests:
+          - not_null
+      - name: to_address
+        description: "transaction to"
